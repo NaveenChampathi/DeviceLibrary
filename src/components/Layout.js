@@ -3,6 +3,7 @@ import Header from './common/Header';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {signOut} from '../actions/authActions';
+import { Link } from 'react-router';
 
 class Layout extends React.Component {
 
@@ -13,9 +14,13 @@ class Layout extends React.Component {
   render() {
     const {auth, actions, loading, user} = this.props;
     return (
-      <div className="container-fluid">
-        <Header signOut={actions.signOut} auth={auth} loading={loading} user={user} />
-        {this.props.children}
+      <div className="container main-container">
+        <div className="jumbotron">
+        <h1>Device Library - Mobile & Tablet</h1>
+        <p>An Application to track the devices</p>
+        <p className="go-home"><Link to="/">Go home</Link></p>
+        </div>
+        <div className="content">{this.props.children}</div>
       </div>
     );
   }

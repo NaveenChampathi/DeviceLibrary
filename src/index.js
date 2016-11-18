@@ -21,9 +21,9 @@ import initialState from './reducers/initialState';
 import configureStore from './store/configureStore'; //eslint-disable-line import/default
 
 // styles
-import './styles/styles.css'; //Webpack can import CSS files too!
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/toastr/build/toastr.min.css';
+import './styles/styles.css'; //Webpack can import CSS files too!
 
 // store initialization
 const store = configureStore(initialState);

@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import user from './userReducer';
+import devices from './deviceReducer';
 import routesPermissions from './routesPermissionsReducer';
 import auth from './authReducer';
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   routesPermissions,
   user,
+  devices,
   auth,
   ajaxCallsInProgress
 });

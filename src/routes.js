@@ -2,6 +2,8 @@ import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 import Layout from './components/Layout';
 import HomePage from './components/home/HomePage';
+import DeviceDetailsPage from './components/details/DeviceDetailsPage';
+import CheckoutPage from './components/checkout/CheckoutPage';
 import AdminPage from './components/admin/AdminPage';
 import ProtectedPage from './components/protected/ProtectedPage';
 import AboutPage from './components/about/AboutPage';
@@ -26,6 +28,8 @@ export default function Routes(store) {
       <Route path="admin" component={AdminPage} onEnter={checkAdmin}/>
       <Route path="register" component={RegistrationPage}/>
       <Route path="login" component={LoginPage}/>
+      <Route path="details/:deviceId" component={DeviceDetailsPage}/>
+      <Route path="checkout/:deviceId" component={CheckoutPage}/>
     </Route>
   );
 }

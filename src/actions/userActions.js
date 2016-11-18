@@ -46,6 +46,22 @@ export function userCreated(user) {
   };
 }
 
+export function fetchDevices() {
+  return (dispatch) => {
+    firebaseApi.getDevices().then(
+        (data) => {
+          firebaseApi.makeADevicesCopy(data.val());
+          dispatch({type: types.FETCH_DEVICES, data: data.val()});
+        })
+      .catch(
+        error => {
+          dispatch(ajaxCallError(error));
+          // @TODO better error handling
+          throw(error);
+        });
+  };
+}
+
 export function userCreatedSuccess() {
   return {
     type: types.USER_CREATED_SUCCESS

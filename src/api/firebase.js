@@ -70,6 +70,23 @@ class FirebaseApi {
       .set(value);
 
   }
+
+  static getDevices() {
+
+    return firebase
+      .database().ref('devices').once("value");
+
+  }
+
+  static makeADevicesCopy(data) {
+    this.devices = data;
+  }
+
+  static getADeviceCopy(index) {
+    return this.devices[index];
+  }
+
 }
+FirebaseApi.devices = [];
 
 export default FirebaseApi;
