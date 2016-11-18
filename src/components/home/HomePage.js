@@ -20,7 +20,7 @@ export class HomePage extends React.Component {
 
 	return(
 		
-		  <div className="col-sm-4 col-md-3 grid-content">
+		  <div className="col-sm-4 col-md-3 grid-content" key={id}>
 		    <div className="thumbnail">
 		      <img src="https://developer.apple.com/app-store/marketing/guidelines/images/thumbnail-ipad-pro.png" alt="Ipad" />
 		      <div className="caption">

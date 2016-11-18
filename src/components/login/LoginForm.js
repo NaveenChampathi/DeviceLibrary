@@ -3,7 +3,7 @@ import TextInput from '../common/TextInput';
 
 const LoginForm = ({user, onSave, onChange, saving}) => {
   return (
-    <form>
+    <form className="col-sm-8 col-md-6">
       <h1>Login</h1>
       <TextInput
         name="email"

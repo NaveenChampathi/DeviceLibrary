@@ -18,7 +18,7 @@ class Layout extends React.Component {
         <div className="jumbotron">
         <h1>Device Library - Mobile & Tablet</h1>
         <p>An Application to track the devices</p>
-        <p className="go-home"><Link to="/">Go home</Link></p>
+        <p><Header signOut={actions.signOut} auth={auth} loading={loading} user={user} /></p>
         </div>
         <div className="content">{this.props.children}</div>
       </div>
@@ -38,7 +38,8 @@ function mapStateToProps(state, ownProps) {
   return {
     auth: state.auth,
     user: state.user,
-    loading: state.ajaxCallsInProgress > 0
+    loading: state.ajaxCallsInProgress > 0,
+    authenticated : state.auth.isLogged
   };
 }
 
