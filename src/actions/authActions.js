@@ -55,10 +55,11 @@ export function authLoggedIn(userUID) {
 }
 
 export function createUserWithEmailAndPassword(user) {
+  const displayName = user.displayName;
   return (dispatch) => {
     dispatch(beginAjaxCall());
-    return firebaseApi.createUserWithEmailAndPassword(user).then(user => {
-      dispatch(userCreated(user));
+    return firebaseApi.createUserWithEmailAndPassword(user).then((fbUser) => {
+      dispatch(userCreated(fbUser, displayName));
     }).catch(error => {
       dispatch(ajaxCallError(error));
       // @TODO better error handling

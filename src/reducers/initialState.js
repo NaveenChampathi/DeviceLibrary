@@ -9,7 +9,8 @@ export default {
   },
   routing: {},
   user: {
-    isAdmin: undefined
+    isAdmin: undefined,
+    displayName: undefined
   },
   auth: {
     isLogged: false,

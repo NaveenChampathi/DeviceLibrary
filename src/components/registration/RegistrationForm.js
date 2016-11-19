@@ -3,8 +3,16 @@ import TextInput from '../common/TextInput';
 
 const RegistrationForm = ({user, onSave, onChange, saving}) => {
   return (
-    <form className="col-sm-8 col-md-6">
+    <form onSubmit={onSave} className="col-sm-8 col-md-6">
       <h1>Create account</h1>
+
+      <TextInput
+        name="displayName"
+        label="Screen name"
+        onChange={onChange}
+        value={user.displayName}
+        />
+        
       <TextInput
         name="email"
         label="Email"
@@ -24,7 +32,7 @@ const RegistrationForm = ({user, onSave, onChange, saving}) => {
         disabled={saving}
         value={saving ? 'Signing up...' : 'Sign Up'}
         className="btn btn-primary"
-        onClick={onSave}/>
+        />
     </form>
   );
 };

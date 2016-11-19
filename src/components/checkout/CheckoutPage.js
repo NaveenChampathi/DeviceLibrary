@@ -14,7 +14,6 @@ const CheckoutPage = (props) => {
 	        	<div className="prod-name">iPad</div>
 	          	<div className="prod-id">Product Id: <span>{props.params.deviceId}</span></div>
 	          	<div className="prod-version">OS: <span>10.0.3</span></div>
-	          	<div className="prod-checkout-person">By Whom: <span><input type="text" /></span></div>
 	          	<Link to={"/checkout/" + props.params.id} className="btn btn-info" >Confirm Checkout</Link>
 	      	</div>
 	    </div>

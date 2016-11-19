@@ -78,12 +78,22 @@ class FirebaseApi {
 
   }
 
+  static fetchMyCheckedOutDevices() {
+    return firebase
+      .database().ref('devices').once("value");
+  }
+
   static makeADevicesCopy(data) {
     this.devices = data;
   }
 
   static getADeviceCopy(index) {
     return this.devices[index];
+  }
+
+  static updateDeviceRecord(path, value, byWhom) {
+    var adaNameRef = firebase.database().ref('devices/' + path);
+    return adaNameRef.update({ checkedOut: value, byWhom: byWhom });
   }
 
 }

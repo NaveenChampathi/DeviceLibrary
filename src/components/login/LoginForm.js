@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
+import { Link } from 'react-router';
 
 const LoginForm = ({user, onSave, onChange, saving}) => {
   return (
@@ -25,6 +26,9 @@ const LoginForm = ({user, onSave, onChange, saving}) => {
         value={saving ? 'Logining in...' : 'Login'}
         className="btn btn-primary"
         onClick={onSave}/>
+        <Link
+        to="/register"
+        className="btn btn-primary sign-up"> Sign up </Link>
     </form>
   );
 };

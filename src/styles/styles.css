@@ -10,9 +10,8 @@ html, body, #root, .container-loading {
   max-width: 850px;
   margin: 0 auto;
 }
-
-a.active {
-  color: orange;
+body {
+  background: #f5f5f5;
 }
 
 nav {
@@ -56,25 +55,41 @@ nav {
 .grid-content {
   padding: 0 8px 16px;
 }
+h3 {
+  font-size: 24px;
+  color:#337ab7;
+}
 .h1-loading {
   color: #fff;
   font-size: 6rem;
   line-height: 8rem;
 }
 .jumbotron h1 {
-  font-size: 28px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.jumbotron p {
+  font-size: 18px;
 }
 .go-home a{
   text-align: right;
   font-size: 12px;
   display: block;
 }
-.container-fluid .jumbotron {
+.main-container .jumbotron {
   border-radius: 0;
   padding: 15px;
+  background: #5499d4;
+  color: #e5e5e5;
+  border-radius: 0;
+  padding: 15px;
+  box-shadow: 0 3px 6px 1px rgba(0,0,0,0.3);
+
 }
 .main-container {
   padding: 0 0 15px 0;
+  background: #f5f5f5;
+  height: 100%;
 }
 /* Product Details Page */
   .prod-description > div {
@@ -103,15 +118,90 @@ nav {
     border: 1px solid #ccc;
     padding: 3px;
   }
-
+  .menu-links {
+    float: left;
+  }
+  .sign-up {
+    margin-left: 15px;
+  }
+  .user-info {
+    float: right;
+  }
+  .menu-links a:active,.menu-links a:focus {
+    text-decoration: none;
+    color: #e2e2e2;
+  }
+ 
+  .devices-list-grid {
+    border: 1px solid #ccc;
+    margin: 0 1% 15px;
+    width: 31%;
+    display: inline-block;
+    padding: 5px 10px;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+  }
+  .devices-list-grid > div {
+    padding: 3px;
+    text-align: left;
+  }
+  .devices-list-grid > div:last-child {
+    border-bottom: 0;
+  }
+  .return-device {
+    margin: 0 auto;
+    display: block;
+  }
+  .table-header .tableCell{
+    text-align: center;
+  }
+  nav {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+  }
+  nav p {
+    margin-bottom: 5px;
+  }
+  nav a {
+    color: #e2e2e2;
+  }
+  nav a.active {
+    font-weight: bold;
+  }
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     h1 {
       font-size: 24px;
+    }
+    .container .jumbotron {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 5px; 
     }
     .prod-image {
       float: none;
       padding: 0;
       margin: 0 0 15px 0;
+    }
+    .menu-links {
+      float: none;
+    }
+    .menu-links a {
+      font-size: 14px;
+    }
+    nav {
+      padding-top: 0;
+    }
+    .user-info {
+      float: none;
+      margin-top: 15px;
+    }
+    .devices-list-grid {
+      width: 100%;
+    }
+    .return-device {
+      font-size: 12px;
+      padding: 5px;
     }
   } 
 /* Product Details page Ends*/

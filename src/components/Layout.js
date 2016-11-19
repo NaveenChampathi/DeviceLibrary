@@ -14,7 +14,8 @@ class Layout extends React.Component {
   render() {
     const {auth, actions, loading, user} = this.props;
     return (
-      <div className="container main-container">
+      <div className="main-container">
+
         <div className="jumbotron">
         <h1>Device Library - Mobile & Tablet</h1>
         <p>An Application to track the devices</p>

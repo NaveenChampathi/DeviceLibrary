@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {createUserWithEmailAndPassword} from '../../actions/authActions';
 import RegistrationForm from './RegistrationForm';
 import toastr from 'toastr';
+import * as firebase from 'firebase/firebase-browser';
 
 export class RegistrationPage extends React.Component {
   constructor(props, context) {
@@ -12,7 +13,8 @@ export class RegistrationPage extends React.Component {
     this.state = {
       user: {
         email: "",
-        password: ""
+        password: "",
+        displayName: ""
       },
       saving: false
     };
@@ -34,7 +36,11 @@ export class RegistrationPage extends React.Component {
     this.setState({saving: true});
 
     this.props.actions.createUserWithEmailAndPassword(this.state.user)
-      .then((user) => toastr.success('User Created'))
+      .then((user) => {
+        console.log("user: ", firebase.User);
+        toastr.success('User Created')
+      })
+      
       .catch(error => {
         toastr.error(error.message);
         this.setState({saving: false});
