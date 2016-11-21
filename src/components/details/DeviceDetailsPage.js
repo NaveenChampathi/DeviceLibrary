@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {updateDeviceRecord} from '../../actions/userActions'; 
+import toastr from 'toastr';
 
 function CheckOutIn(props) {
 			if(props.checkedOut) {
@@ -23,7 +24,14 @@ class DeviceDetailsPage extends Component {
     this.updateDeviceRecord = this.updateDeviceRecord.bind(this);
   }
 	updateDeviceRecord(path, val, byWhom) {
-		this.props.actions.updateDeviceRecord(path, val, byWhom);
+		if(!this.props.authenticated) {
+        this.context.router.push('/login');
+        toastr.error('You need to be logged to access this page');
+      }
+      else {
+      	byWhom = val ? byWhom : "";
+		    this.props.actions.updateDeviceRecord(path, val, byWhom);
+      }
 	}
 
 	render() {
@@ -50,9 +58,14 @@ class DeviceDetailsPage extends Component {
 	}
 };
 
+DeviceDetailsPage.contextTypes = {
+      router : PropTypes.object
+    };
+
 function mapStateToProps(state, ownProps) {
-  return { devices: state.devices,
-  					user : state.user.displayName};
+  return {  devices: state.devices,
+  					user : state.user.displayName,
+  				  authenticated : state.auth.isLogged};
 }
 
 function mapDispatchToProps(dispatch) {

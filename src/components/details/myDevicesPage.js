@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import {bindActionCreators} from 'redux';
+import {updateDeviceRecord} from '../../actions/userActions'; 
 import {connect} from 'react-redux';
 
 class MyDevicesPage extends Component {
@@ -12,7 +14,7 @@ class MyDevicesPage extends Component {
   		if(device.byWhom == this.props.user){
   			return (
   				
-  					<div className="devices-list-grid">
+  					<div className="devices-list-grid" key={device.id}>
   						<div className="devices-list-row">
   							<b>Device Name: </b>{device.name}
   						</div>
@@ -20,7 +22,7 @@ class MyDevicesPage extends Component {
   							<b>OS:</b> 10.0.1
   						</div>
   						<div className="devices-list-row">
-  							<button className="btn btn-danger return-device">Return Device</button>
+  							<button onClick={() => this.updateDeviceRecord(device.id)} className="btn btn-danger return-device">Return Device</button>
   						</div>
   					</div>
   				);
@@ -28,10 +30,20 @@ class MyDevicesPage extends Component {
   	});
   }
 
+  updateDeviceRecord(id) {
+    this.props.actions.updateDeviceRecord(id.toString(), false, "");
+  }
+
 	render() {
+    const myDevices = [];
+    this.props.devices.map((device) => {
+      if(device.byWhom == this.props.user){
+        myDevices.push(device);
+      }
+    });
 		return (
 			    <div className="details-page">
-			      	<h3> Devices that are checked out by you </h3>
+			      	<h3> {myDevices.length > 0 ? "Devices that are checked out by you" : "Your list is empty"} </h3>
 			      	<div className="devices-list">
 			      		{this.getMyDevices()}
 			      	</div>
@@ -46,4 +58,10 @@ function mapStateToProps(state, ownProps) {
   					user : state.user.displayName};
 }
 
-export default connect(mapStateToProps)(MyDevicesPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({updateDeviceRecord}, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyDevicesPage);

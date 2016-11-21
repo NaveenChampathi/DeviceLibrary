@@ -1,3 +1,4 @@
+'use strict';
 let path = require('path');
 let webpack = require('webpack');
 
@@ -11,7 +12,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/dist/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
@@ -29,4 +30,4 @@ const config = {
   }
 };
 
-export default config;
+module.exports = config;
